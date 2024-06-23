@@ -28,7 +28,7 @@ class TestSimple:
 
 
     def test_read_item_by_hash_name_401(self):
-        resp = requests.get("http://localhost:8000/order/", params={"json_data": json.dumps({"key": "1"}), "session_id": "defasddinitely", "client_order_id": str(uuid.uuid4())})
+        resp = requests.get("http://localhost:8000/order/", params={"json_data": json.dumps({"key": "1"}), "session_id": "definitely not session-id", "client_order_id": str(uuid.uuid4())})
         #response = client.get("/order/", params={"json_data": json.dumps({"key": "1"}), "session_id": "definitely", "client_order_id": str(uuid.uuid4())})
         assert resp.status_code == 401
 
