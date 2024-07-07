@@ -1,7 +1,4 @@
-# python-template
-
-
-## Start Redis docker container
+## redis set get method
 docker run --network host -p 6379:6379 -d redis
 
 ```shell
