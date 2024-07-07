@@ -33,8 +33,8 @@ r_session = redis.Redis(host=os.environ.get("REDIS_HOST", "localhost"), port=os.
 JSON_LIMIT_SIZE = 16000
 
 
-@app.post("/get-session/")
-async def register_user():
+@app.get("/get-session/")
+async def create_session_id():
     session_id = str(uuid.uuid4())
     try:
         await r_session.set(session_id, "Active")
@@ -46,7 +46,7 @@ async def register_user():
 
 
 @app.get("/order/")
-async def read_item_by_hash_name(json_data: str, session_id: str, client_order_id: str):
+async def set_order(json_data: str, session_id: str, client_order_id: str):
     exist_check_session = await r_session.exists(session_id)
     exist_check_client_order_id = await r_orders.exists(client_order_id)
 
